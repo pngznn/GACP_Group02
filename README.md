@@ -9,28 +9,31 @@
 ---
 
 ## Project Description
-The Generative AI Content Platform is an enterprise-oriented application designed to help individuals and businesses create high-quality content quickly, consistently, and at scale.
+The Generative AI Content Platform (GACP) is a web-based application that helps users generate marketing and communication content efficiently using Generative AI.
 
-The platform leverages Generative AI to support content creation for marketing, branding, and communication purposes.
+The system focuses on supporting content creation tasks such as blog writing, social media posts, and email content through a simple and user-friendly interface.
+The backend exposes a local API running on localhost, allowing the frontend to interact with AI-powered content generation logic without requiring deployment to an online server.
 
-This system allows users to generate various types of content such as blog articles, social media posts, and email marketing campaigns while ensuring brand consistency and SEO optimization. In addition, it supports collaboration and approval workflows, making it suitable for team-based content production.
+This project is designed as an academic application to demonstrate the integration of AI, web technologies, and API-based architecture.
 
 ---
 
 ## Project Objectives
-- Provide a powerful yet user-friendly platform for AI-driven content creation
+- Build a web application that integrates Generative AI for content creation
 - Enable businesses to scale marketing content efficiently with personalization
 - Ensure brand consistency through templates and brand-style guidelines
 - Support SEO-optimized content to improve online visibility
 - Facilitate collaboration and approval processes within content teams
+- Ensure the system can run fully on local environment (localhost)
 
 ---
 
 ## Key Features
 
 ### AI Content Generation
-- Automatically generate blog posts, social media content, and marketing emails
+- Generate content such as blog posts, social media captions, and email drafts
 - Support customizable prompts to match different tones and purposes
+- AI processing is handled via a local API
 
 ### Templates & Brand Style Guide
 - Create and manage content templates
@@ -61,11 +64,16 @@ This platform is suitable for:
 ---
 
 ## Technologies Used
-- **Backend:** Python-based Web Application using Flask
+- **Backend:** Python with Flask (RESTful API running on localhost)
 - **Frontend:** HTML, CSS, Jinja2 Templates
-- **AI Integration:** Generative AI (LLM-based content generation)
-- **Database:** SQLite / SQL Server
-- **Other Tools:** SEO analysis modules, content workflow management 
+- **AI Integration:** Generative AI (LLM-based content generation – local/offline or mocked API)
+- **Database:** SQL Server
+- **Development Tools:** Visual Studio Code, GitHub 
+
+---
+
+## Note
+- The API is designed to run locally and is not deployed to a public server
 
 ---
 
