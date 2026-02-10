@@ -9,12 +9,9 @@
 ---
 
 ## Project Description
-The Generative AI Content Platform (GACP) is a web-based application that helps users generate marketing and communication content efficiently using Generative AI.
-
-The system focuses on supporting content creation tasks such as blog writing, social media posts, and email content through a simple and user-friendly interface.
-The backend exposes a local API running on localhost, allowing the frontend to interact with AI-powered content generation logic without requiring deployment to an online server.
-
-This project is designed as an academic application to demonstrate the integration of AI, web technologies, and API-based architecture.
+The Generative AI Content Platform is an enterprise-oriented application designed to help individuals and businesses create content quickly, consistently. The platform leverages Generative AI to support content creation for marketing, branding, and communication purposes. 
+This system allows users to generate various types of content such as blog articles, social media posts, and email marketing campaigns while ensuring brand consistency and SEO optimization. 
+In addition, it supports collaboration and approval workflows, making it suitable for team-based content production.
 
 ---
 
