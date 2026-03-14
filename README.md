@@ -44,10 +44,6 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Enable multiple users to collaborate on content
 - Support content review, approval, and revision workflows
 
-### Content Management
-- Store and manage generated content
-- Track content versions and editing history
-
 ---
 
 ## Target Users
