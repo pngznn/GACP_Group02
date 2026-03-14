@@ -32,7 +32,7 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Support customizable prompts to match different tones and purposes
 - AI processing is handled via a local API
 <p align="center">
-  <img src="images/ai_content.png" width="700">
+  <img src="images/AI Generator.png" width="700">
 </p>
 
 ### Templates & Brand Style Guide
@@ -40,7 +40,10 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Enforce brand voice, tone, and formatting consistency
 
 <p align="center">
-  <img src="images/templates_brand.png" width="700">
+  <img src="images/Templates.png" width="700">
+</p>
+<p align="center">
+  <img src="images/Brand.png" width="700">
 </p>
 
 
@@ -49,7 +52,7 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Provide keyword suggestions and optimization recommendations
 
 <p align="center">
-  <img src="images/seo_optimizer.png" width="700">
+  <img src="images/SEO.png" width="700">
 </p>
 
 
@@ -58,7 +61,10 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Support content review, approval, and revision workflows
 
 <p align="center">
-  <img src="images/collaboration.png" width="700">
+  <img src="images/Collaboration.png" width="700">
+</p>
+<p align="center">
+  <img src="images/Approval.png" width="700">
 </p>
 
 ---
