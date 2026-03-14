@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KoVa – Launch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='launch.css') }}">
+</head>
+<body>
+    <div class="hero">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+        <h1 class="brand">KoVa</h1>
+        <p class="subtitle">Generative AI Content Platform</p>
+
+        <a href="/login" class="btn btn-login">Login</a>
+        <a href="/register" class="btn btn-register">Register</a>
+    </div>
+</body>
+</html>

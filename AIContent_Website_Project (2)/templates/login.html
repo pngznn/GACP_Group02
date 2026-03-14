@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - KoVa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+<div class="login-wrapper">
+    <div class="login-card {% if not error %}animate{% endif %}">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+        <h2>Login to <span>KoVa</span>!</h2>
+
+        <form method="POST" novalidate>
+
+            <!-- EMAIL -->
+            <div class="input-group">
+                
+                <!-- Email Icon -->
+                <svg class="icon-left" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 
+                    2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 
+                    4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+
+                <input type="email" name="email" placeholder="Email">
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-group">
+
+                <!-- Lock Icon -->
+                <svg class="icon-left" viewBox="0 0 24 24">
+                    <path d="M17 8V6a5 5 0 00-10 0v2H5v14h14V8h-2zm-8 
+                    0V6a3 3 0 016 0v2H9z"/>
+                </svg>
+
+                <input type="password" id="password" name="password" placeholder="Password">
+
+                <!-- Eye Icon -->
+                <svg id="eyeOpen" class="icon-right"
+                onclick="togglePassword()"
+                viewBox="0 0 24 24">
+
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <!-- Eye Slash Icon -->
+                <svg id="eyeClosed" class="icon-right"
+                    onclick="togglePassword()"
+                    viewBox="0 0 24 24"
+                    style="display:none;">
+
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <line x1="4" y1="4"
+                        x2="20" y2="20"/>
+                </svg>
+            </div>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <div class="links">
+                <p>
+                    Don’t have an account?
+                    <a href="{{ url_for('register') }}" class="register-link">Register Now!</a>
+                </p>
+
+                <a href="{{ url_for('forgot_password') }}" class="forgot-link">Forgot your password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+function togglePassword(){
+    const pass = document.getElementById("password");
+    const eyeOpen = document.getElementById("eyeOpen");
+    const eyeClosed = document.getElementById("eyeClosed");
+
+    if(pass.type === "password"){
+        pass.type = "text";
+        eyeOpen.style.display = "none";
+        eyeClosed.style.display = "block";
+    } else {
+        pass.type = "password";
+        eyeOpen.style.display = "block";
+        eyeClosed.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
+

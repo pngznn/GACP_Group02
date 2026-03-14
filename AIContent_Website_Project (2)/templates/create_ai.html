@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Content Generator - KoVa</title>
+
+    <!-- CSS layout chính -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+    <!-- CSS riêng của trang -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='create_ai.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    {% include 'sidebar.html' %}
+
+    <!-- MAIN -->
+    <main class="content">
+
+        <div class="top-bar">
+            <h1>AI Content Generator</h1>
+            <p>Create high-quality content for blogs, social media, and email campaigns</p>
+        </div>
+
+        <div class="generator-layout">
+
+            <!-- LEFT SETTINGS -->
+            <div class="settings">
+
+                <h2>Content Settings</h2>
+
+                <label>Content Type</label>
+
+                <div class="type-buttons">
+                    <button class="type-btn active" data-type="blog">Blog</button>
+                    <button class="type-btn" data-type="post">Post</button>
+                    <button class="type-btn" data-type="email">Email</button>
+                </div>
+
+                <label id="formatLabel">Format</label>
+
+                <select id="formatSelect">
+                    <option>Personal Blog</option>
+                    <option>Case Study</option>
+                    <option>News Article</option>
+                </select>
+
+                <label>Tone of Voice</label>
+                <select>
+                    <option>Professional</option>
+                    <option>Friendly</option>
+                    <option>Humorous</option>
+                </select>
+
+                <label>Topic or Prompt</label>
+                <textarea placeholder="Describe what you want to create..."></textarea>
+
+                <button class="generate-btn">Generate AI Content</button>
+
+            </div>
+
+            <!-- RIGHT RESULT -->
+            <div class="result">
+
+                <div class="result-header">
+                    <h3>Generated Content</h3>
+                    <button id="regenBtn" class="regen-btn" style="display:none">↻ Regenerate</button>
+                </div>
+
+                <div id="resultContent" class="empty-box">
+
+                {% if item %}
+
+                <div class="generated-text">
+
+                <h2>{{ item.title }}</h2>
+
+                {{ item.content | safe }}
+
+                </div>
+
+                <script>
+                document.addEventListener("DOMContentLoaded", function(){
+
+                    document.getElementById("resultActions").style.display = "flex";
+                    document.getElementById("regenBtn").style.display = "inline-block";
+
+                });
+                </script>
+
+                {% else %}
+
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" width="60" height="60"
+                    fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/>
+                    </svg>
+                </div>
+
+                <h4>Ready to create amazing content</h4>
+                <p>Fill in the settings and click generate to create AI-powered content</p>
+
+                {% endif %}
+
+                </div>
+
+                <div id="resultActions" class="result-actions" style="display:none">
+                    <button id="copyBtn">Copy</button>
+                    <button id="saveBtn" class="save-btn">Save to Library</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+<script>
+let editingId = "{{ item.id if item else '' }}";
+let editingType = "{{ item_type if item else '' }}";
+</script>
+<script>
+const typeButtons = document.querySelectorAll(".type-btn");
+const formatLabel = document.getElementById("formatLabel");
+const formatSelect = document.getElementById("formatSelect");
+
+typeButtons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        // đổi màu button
+        typeButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const type = btn.dataset.type;
+
+        // BLOG
+        if(type === "blog"){
+
+            formatLabel.textContent = "Format";
+
+            formatSelect.innerHTML = `
+                <option>Personal Blog</option>
+                <option>Case Study</option>
+                <option>News Article</option>
+            `;
+
+        }
+
+        // POST
+        if(type === "post"){
+
+            formatLabel.textContent = "Platform";
+
+            formatSelect.innerHTML = `
+                <option>Facebook</option>
+                <option>Instagram</option>
+                <option>Twitter/X</option>
+            `;
+
+        }
+
+        // EMAIL
+        if(type === "email"){
+
+            formatLabel.textContent = "Type";
+
+            formatSelect.innerHTML = `
+                <option>Welcome</option>
+                <option>Promotional</option>
+                <option>Newsletter</option>
+            `;
+
+        }
+
+    });
+
+});
+const generateBtn = document.querySelector(".generate-btn");
+const resultBox = document.getElementById("resultContent");
+const regenBtn = document.getElementById("regenBtn");
+const actions = document.getElementById("resultActions");
+
+generateBtn.addEventListener("click", generateContent);
+regenBtn.addEventListener("click", generateContent);
+
+function generateContent(){
+
+    const type = document.querySelector(".type-btn.active").dataset.type;
+    const format = document.getElementById("formatSelect").value;
+    const tone = document.querySelectorAll("select")[1].value;
+    const prompt = document.querySelector("textarea").value;
+
+    if(prompt.trim() === ""){
+        alert("Please enter a topic or prompt");
+        return;
+    }
+
+    const content = createFakeAI(type, format, tone, prompt);
+
+    resultBox.innerHTML = `
+        <div class="generated-text">
+            ${content}
+        </div>
+    `;
+
+    regenBtn.style.display = "inline-block";
+    actions.style.display = "flex";
+}
+
+function createFakeAI(type, format, tone, prompt){
+
+    let titleMatch = prompt.match(/"(.*?)"/);
+    let title = titleMatch ? titleMatch[1] : prompt.split(" ").slice(0,6).join(" ");
+
+    return `
+    <h2>${title}</h2>
+
+    <p>In today's digital world, <b>${title}</b> is becoming increasingly important for businesses and creators.</p>
+
+    <h3>Key Insights</h3>
+
+    <ol>
+    <li><b>Innovation drives growth</b> – Brands that adapt quickly outperform competitors.</li>
+    <li><b>Customer focus</b> – Understanding user needs builds stronger relationships.</li>
+    <li><b>Content consistency</b> – Regular publishing improves visibility and engagement.</li>
+    </ol>
+
+    <h3>Conclusion</h3>
+
+    <p>By applying these strategies in ${type} content for ${format}, organizations can improve engagement and long-term impact.</p>
+    `;
+}
+document.getElementById("copyBtn").addEventListener("click", function(){
+
+    const text = document.querySelector(".generated-text").innerText;
+
+    navigator.clipboard.writeText(text);
+
+    const toast = document.getElementById("toastCopy");
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },1500);
+});
+document.getElementById("saveBtn").addEventListener("click", function(){
+
+    const type = document.querySelector(".type-btn.active").dataset.type;
+    const title = document.querySelector(".generated-text h2").innerText;
+    const content = document.querySelector(".generated-text").innerHTML;
+
+    const date = new Date().toLocaleDateString("en-US",{
+        year:"numeric",
+        month:"long",
+        day:"numeric"
+    });
+
+    fetch("/save_content",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            id: editingId,   // quan trọng
+            type: type,
+            title: title,
+            content: content,
+            date: date
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        showSaveToast();
+    });
+
+});
+function showSaveToast(){
+
+    const toast = document.getElementById("toastSave");
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },1500);
+
+}
+</script>
+<div id="toastCopy">✓ Content copied successfully!</div>
+<div id="toastSave">✓ Content saved to library successfully!</div>
+</body>
+</html>

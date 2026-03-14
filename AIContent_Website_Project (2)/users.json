@@ -1,0 +1,107 @@
+{
+    "users": [
+        {
+            "name": "Admin",
+            "gender": "Male",
+            "email": "admin@gmail.com",
+            "phone": "0903123456",
+            "password": "123456",
+            "role": "Admin",
+            "contents": 45
+        },
+        {
+            "name": "User1",
+            "gender": "Other",
+            "email": "user1@gmail.com",
+            "phone": "",
+            "password": "abc111",
+            "role": "Member",
+            "contents": 20
+        },
+        {
+            "name": "User2",
+            "gender": "Male",
+            "email": "user2@gmail.com",
+            "phone": "0903344556",
+            "password": "pass123",
+            "role": "Member",
+            "contents": 12
+        },
+        {
+            "name": "User3",
+            "gender": "Other",
+            "email": "user3@gmail.com",
+            "phone": "0903222333",
+            "password": "pass456",
+            "role": "Member",
+            "contents": 8
+        },
+        {
+            "name": "User4",
+            "gender": "Male",
+            "email": "user4@gmail.com",
+            "phone": "0903444555",
+            "password": "pass789",
+            "role": "Member",
+            "contents": 5
+        },
+        {
+            "name": "abc",
+            "email": "abc@gmail.com",
+            "role": "Member",
+            "contents": 0
+        },
+        {
+            "name": "ngan03305",
+            "email": "ngan03305@gmail.com",
+            "role": "Admin",
+            "contents": 0
+        },
+        {
+            "name": "aaaa",
+            "email": "aaaa@gmail.com",
+            "role": "Member",
+            "contents": 0
+        }
+    ],
+    "activities": [
+        {
+            "user": "User1",
+            "action": "rejected",
+            "content": "Product Blog Post",
+            "time": "10 minutes ago"
+        },
+        {
+            "user": "User4",
+            "action": "submit for Approval",
+            "content": "Product Blog Post",
+            "time": "30 minutes ago"
+        }
+    ],
+    "posts": [
+        {
+            "title": "Best Travel Destinations in Vietnam 2025",
+            "author": "User1",
+            "time": "Just now",
+            "status": "pending"
+        },
+        {
+            "title": "Product Update LinkedIn Post",
+            "author": "User2",
+            "time": "20 minutes ago",
+            "status": "pending"
+        },
+        {
+            "title": "Customer Onboarding Email Sequence",
+            "author": "User2",
+            "time": "30 minutes ago",
+            "status": "pending"
+        },
+        {
+            "title": "Industry Trends Analysis",
+            "author": "User3",
+            "time": "40 minutes ago",
+            "status": "rejected"
+        }
+    ]
+}

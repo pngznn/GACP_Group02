@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - KoVa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    {% include 'sidebar.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="top-header">
+            <h1>Welcome to <span>KoVa</span>!</h1>
+
+            <p class="subtitle">
+                Everything You Need to Power Your Content Marketing
+            </p>
+
+            <p class="sub2">
+                <span class="brand-purple">KoVa</span> helps you create, optimize,
+                and manage marketing content on a single platform
+            </p>
+        </div>
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-text">
+                <h2>Create AI Content Super Fast!</h2>
+                <p>
+                    From idea to publish-ready content, faster than ever with blogs, posts, and emails in just a few clicks
+                </p>
+                <a href="{{ url_for('ai_library') }}" class="hero-btn">
+                    Let’s create! →
+                </a>
+            </div>
+                <div class="hero-circle">
+                    <svg viewBox="0 0 24 24" class="sparkle-icon" fill="none" stroke="white" stroke-width="2">
+                        <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/>
+                    </svg>
+                </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">
+                    <!-- DÙNG SVG BÊN MENU -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3>Template & Brand - Style Guide</h3>
+                <p>
+                    Create reusable templates and keep every piece of content aligned with your brand identity
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="M21 21l-4.3-4.3"/>
+                    </svg>
+                </div>
+                <h3>SEO Optimizer</h3>
+                <p>
+                    Optimize your content for search engines and improve your ranking with smart suggestions
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="8" cy="8" r="3"/>
+                        <circle cx="16" cy="16" r="3"/>
+                        <path d="M11 11l2 2"/>
+                    </svg>
+                </div>
+                <h3>Collaboration</h3>
+                <p>
+                    Member management quickly
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M9 12l2 2 4-4"/>
+                        <rect x="3" y="3" width="18" height="18" rx="4"/>
+                    </svg>
+                </div>
+                <h3>Approval</h3>
+                <p>
+                    Submit content for review, track status, and get approvals faster
+                </p>
+            </div>
+
+        </div>
+
+        <div class="lets-work">
+            Let’s work!
+        </div>
+
+
+    </main>
+
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const profileBtn = document.getElementById("profileBtn");
+    const profilePopup = document.getElementById("profilePopup");
+    const profileModal = document.getElementById("profileModal");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    const openProfileModal = document.getElementById("openProfileModal");
+
+    // Mở popup
+    profileBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        profilePopup.classList.toggle("active");
+    });
+
+    // Đóng popup khi click ngoài
+    document.addEventListener("click", function(e) {
+        if (!profilePopup.contains(e.target) && !profileBtn.contains(e.target)) {
+            profilePopup.classList.remove("active");
+        }
+    });
+
+    // Mở modal khi click header popup
+    if (openProfileModal) {
+        openProfileModal.addEventListener("click", function(e) {
+            e.stopPropagation();
+            profileModal.style.display = "flex";
+            profilePopup.classList.remove("active");
+        });
+    }
+
+    // Đóng modal
+    cancelBtn.addEventListener("click", function() {
+        profileModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(e) {
+        if (e.target === profileModal) {
+            profileModal.style.display = "none";
+        }
+    });
+
+});
+</script>
+
+<!-- PROFILE SETTINGS MODAL -->
+<div class="profile-modal" id="profileModal">
+    <div class="profile-modal-content">
+
+        <div class="profile-header">
+            <div class="profile-icon">
+            <svg viewBox="0 0 24 24" width="32" height="32">
+                <circle cx="12" cy="8" r="4"
+                    fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M4 20c0-4 4-6 8-6s8 2 8 6"
+                    fill="none" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+        </div>
+            <h2>Profile Settings</h2>
+            <p>Manage your account</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('update_profile') }}">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name"
+                           value="{{ session['user']['name'] }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="gender">
+                        <option value="Male"
+                            {% if session['user'].get('gender') == 'Male' %}selected{% endif %}>
+                            Male
+                        </option>
+                        <option value="Female"
+                            {% if session['user'].get('gender') == 'Female' %}selected{% endif %}>
+                            Female
+                        </option>
+                        <option value="Other"
+                            {% if session['user'].get('gender') == 'Other' %}selected{% endif %}>
+                            Other
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email"
+                       value="{{ session['user']['email'] }}"
+                       readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone"
+                       value="{{ session['user'].get('phone', '') }}">
+            </div>
+
+            <div class="modal-buttons">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <button type="submit" class="save-btn">Save Changes</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% if success %}
+<div id="toast" class="toast">
+    ✔ Saved changes successfully
+</div>
+{% endif %}
+
+{% if success %}
+<script>
+    const toast = document.getElementById("toast");
+
+    // Hiện toast
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 100);
+
+    // Ẩn sau 2 giây
+    setTimeout(() => {
+        toast.classList.remove("show");
+
+        // XÓA ?success=1 khỏi URL
+        window.history.replaceState({}, document.title, "/home");
+
+    }, 2000);
+</script>
+{% endif %}
+
+</body>
+</html>

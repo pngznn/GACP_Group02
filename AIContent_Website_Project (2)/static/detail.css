@@ -1,0 +1,118 @@
+/* wrapper */
+.detail-wrapper{
+    padding:40px;
+    display:flex;
+    justify-content:flex-start;
+}
+
+/* card */
+.detail-card{
+    width:1100px;
+    margin-left:-20px;
+    max-width:100%;
+    background:white;
+    border-radius:14px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    padding:30px;
+}
+
+/* header */
+.detail-header h2{
+    font-size:24px;
+    margin-bottom:6px;
+}
+
+.date{
+    color:#777;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+/* content */
+.content-box{
+    background:#e2e5ff;
+    padding:24px;
+    border-radius:12px;
+    line-height:1.7;
+}
+.content-box h1,
+.content-box h2,
+.content-box h3,
+.content-box h4{
+    margin-top:8px;
+    margin-bottom:8px;
+}
+
+.content-box p{
+    margin:6px 0;
+}
+
+.content-box ol,
+.content-box ul{
+    margin:6px 0;
+    padding-left:20px;
+}
+
+.content-box li{
+    margin:4px 0;
+}
+
+.content-text{
+    white-space: normal;
+    word-break: break-word;
+    font-size:15px;
+}
+.content-box h2{
+    margin-bottom:6px;
+}
+
+.content-box h3{
+    margin-top:12px;
+}
+
+/* actions */
+.detail-actions{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    justify-content:flex-end;
+}
+
+/* buttons */
+.back-btn{
+    background:#eee;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.edit-btn{
+    background:#6366f1;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.export-btn{
+    background:#7c83ff;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.back-btn:hover{
+    background:#ddd;
+}
+
+.edit-btn:hover{
+    background:#4f46e5;
+}
+
+.export-btn:hover{
+    background:#6366f1;
+}

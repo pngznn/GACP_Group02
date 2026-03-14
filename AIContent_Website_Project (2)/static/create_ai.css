@@ -1,0 +1,221 @@
+.content {
+    padding: 40px;
+}
+
+.top-bar h1{
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.top-bar p{
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.back-btn{
+    text-decoration:none;
+    font-weight:600;
+    display:inline-block;
+    margin-bottom:10px;
+}
+
+.generator-layout{
+    display:flex;
+    gap:40px;
+    margin-top:30px;
+}
+
+/* LEFT */
+
+.settings{
+    width:420px;
+}
+
+.settings h2{
+    color:#5a6cff;
+}
+
+.settings label{
+    display:block;
+    margin-top:20px;
+    font-weight:600;
+}
+
+.type-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.type-buttons button{
+    padding:8px 16px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    background:white;
+}
+
+.type-buttons .active{
+    background:#e7e9ff;
+}
+
+select, textarea{
+    width:100%;
+    margin-top:8px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+textarea{
+    height:120px;
+}
+
+.generate-btn{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    background:#6c63ff;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+}
+
+/* RIGHT */
+
+.result{
+    flex:1;
+    border:1px solid #ddd;
+    border-radius:16px;
+    padding:30px;
+}
+
+.empty-box .icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+.result h3{
+    color:#5a6cff;
+}
+.empty-box{
+    text-align:center;
+    color:#777;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;   /* căn giữa dọc */
+    align-items:center;       /* căn giữa ngang */
+
+    height:100%;
+}
+
+.empty-box .icon{
+    color:#5a6cff;
+    margin-bottom:15px;
+}
+
+.empty-box h4{
+    margin-bottom:8px;
+}
+.result-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.regen-btn{
+    background:#6c63ff;
+    border:none;
+    color:white;
+    padding:6px 12px;
+    border-radius:6px;
+}
+
+.result-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+}
+
+.result-actions button{
+    padding:8px 14px;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+.save-btn{
+    background:#6c63ff;
+    color:white;
+    border:none;
+}
+.generated-text{
+    text-align:left;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.generated-text h2{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.generated-text h3{
+    color:#5a6cff;
+    margin-top:15px;
+}
+
+.generated-text ol{
+    padding-left:20px;
+}
+button,
+.type-btn,
+.regen-btn,
+.save-btn,
+.result-actions button{
+    cursor: pointer;
+}
+#toastCopy{
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    background: #6cc04a;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    z-index: 1000;
+
+    opacity: 0;
+    transform: translateX(80px);
+    transition: 0.4s;
+}
+
+#toastCopy.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+#toastSave{
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    background: #6cc04a;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    z-index: 1000;
+
+    opacity: 0;
+    transform: translateX(80px);
+    transition: 0.4s;
+}
+
+#toastSave.show{
+    opacity: 1;
+    transform: translateX(0);
+}

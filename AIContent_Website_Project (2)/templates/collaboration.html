@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collaboration - KoVa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <!-- CSS riêng của trang Collaboration -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='collaboration.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    {% include 'sidebar.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div>
+                <h1>Team Collaboration</h1>
+                <p>Manage your team members and collaboration</p>
+            </div>
+
+            <button class="invite" id="inviteBtn">+ Invite Member</button>
+        </div>
+
+        <!-- TEAM MEMBERS -->
+        
+<div class="content-card">
+
+    <div class="card-header">
+
+        <div class="card-left">
+
+            <span class="badge blog">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+                </svg>
+                Team Members
+            </span>
+
+        </div>
+
+
+        <div class="card-right">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search"
+                placeholder="Search team members..."
+            >
+
+            <span class="total">Total: {{ members|length }}</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div id="memberList">
+
+        {% for m in members %}
+
+<div class="member-row">
+
+    <div class="member-left">
+
+        <div class="avatar">
+            {{ m.name[0] }}
+        </div>
+
+        <div class="member-info">
+
+            <div class="member-name">
+                {{ m.name }}
+
+                {% if m.role == "Admin" %}
+                👑
+                {% endif %}
+            </div>
+
+            <div class="member-email">
+                {{ m.email }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="member-right">
+
+        <div class="member-content">
+            {{ m.contents }} contents
+        </div>
+
+        <div class="role-badge {{ m.role|lower }}">
+            {{ m.role }}
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- RECENT ACTIVITY -->
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <span class="badge post">
+
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M4 12h16"/>
+                        <path d="M12 4v16"/>
+                    </svg>
+
+                    Recent Activity
+
+                </span>
+
+            </div>
+
+
+            <div class="card-body">
+
+                {% for a in activities %}
+
+                <div class="activity-row">
+
+    <div class="activity-left">
+        💬
+    </div>
+
+    <div class="activity-right">
+
+        <div class="activity-text">
+            <b>{{ a.user }}</b>
+            {{ a.action }}
+            <b>{{ a.content }}</b>
+        </div>
+
+        <div class="activity-time">
+            {{ a.time }}
+        </div>
+
+    </div>
+
+</div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- POPUP INVITE MEMBER -->
+
+<div id="invitePopup" class="popup">
+
+    <div class="popup-content">
+
+        <h3>Invite Member</h3>
+
+        <form method="POST" action="/invite-member">
+
+<input 
+type="email" 
+name="email"
+placeholder="Email address"
+required
+>
+
+<select name="role">
+<option value="Member">Member</option>
+<option value="Admin">Admin</option>
+</select>
+
+<div class="popup-buttons">
+
+<button type="button" id="cancelBtn">Cancel</button>
+
+<button type="submit">Invite</button>
+
+</div>
+
+</form>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* POPUP */
+
+const inviteBtn = document.getElementById("inviteBtn");
+const popup = document.getElementById("invitePopup");
+const cancelBtn = document.getElementById("cancelBtn");
+
+inviteBtn.onclick = () => {
+    popup.style.display = "flex";
+};
+
+cancelBtn.onclick = () => {
+    popup.style.display = "none";
+};
+
+
+/* SEARCH MEMBER */
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let keyword = this.value.toLowerCase();
+
+    let members = document.querySelectorAll(".member-row");
+
+    members.forEach(member =>{
+
+        let text = member.innerText.toLowerCase();
+
+        member.style.display = text.includes(keyword)
+        ? "flex"
+        : "none";
+
+    });
+});
+</script>
+</body>
+</html>
+

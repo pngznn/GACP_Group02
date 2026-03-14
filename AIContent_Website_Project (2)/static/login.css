@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: white;   /* đổi từ gradient sang trắng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 40px;
+    border-radius: 0;
+    border: 1px solid #ddd;   /* thêm viền nhẹ cho đẹp */
+    outline: none;
+    background: #ffffff;      /* trắng */
+    font-size: 14px;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+}
+
+.icon-left {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-right {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.icon-left{
+    width: 18px;
+    height: 18px;
+    fill: black;   /* icon đen trắng */
+}
+.icon-right {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    fill: none;          /* bỏ fill đen */
+    stroke: black;       /* vẽ viền đen */
+    stroke-width: 2;
+}
+
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    width: 650px;
+    max-width: 95%;
+    padding: 60px 50px;
+    border-radius: 25px;
+
+    background-image: url("bg_card.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+h2 span {
+    color: #8f8fff;
+}
+
+.login-btn {
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(108, 108, 250, 0.55); /* tím có độ trong suốt */
+    color: #ffffff; /* chữ trắng */
+    font-weight: bold;
+    cursor: pointer;
+    margin: 40px auto 0;   /* tăng khoảng cách */
+    display: block;
+    backdrop-filter: blur(8px); /* hiệu ứng kính mờ */
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #6c6cfa; /* tím đậm hơn */
+}
+
+.links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+}
+.register-link {
+    color: #FFD700 !important;
+}
+
+.error {
+    color: #ffcccc;
+    margin-top: 10px;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+.links p {
+    margin: 0;   /* bỏ margin mặc định của p */
+}
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Ẩn icon show password của Edge */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* Ẩn icon autofill Chrome */
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+}
+
+.animate {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

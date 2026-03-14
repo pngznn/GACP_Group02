@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Templates & Brand - KoVa</title>
+
+    <!-- CSS chung -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+    <!-- CSS riêng của trang Template & Brand -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='template_brand.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    {% include 'sidebar.html' %}
+
+    <main class="content">
+        <div class="top-header tb-header-row">
+            <div>
+                <h1>Templates & Brand Guide</h1>
+                <p class="subtitle">
+                    Manage your brand identity and content templates in one place
+                </p>
+            </div>
+            <button id="saveChangesBtn" class="tb-save-btn" disabled>Save changed</button>
+        </div>
+
+        <!-- Tabs + Filters row -->
+        <div class="tb-controls-row">
+            <div class="tb-tabs">
+                <button class="tb-tab-btn active" data-tab="templates">Templates</button>
+                <button class="tb-tab-btn" data-tab="brand">Brand Guide</button>
+            </div>
+
+            <div class="tb-filter-row" id="templateFilterRow">
+                <div class="tb-pill-bar">
+                    <div class="tb-pill-group">
+                        <button class="tb-pill active">
+                            <span class="tb-pill-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="4" y="4" width="6" height="6" rx="1"/>
+                                    <rect x="14" y="4" width="6" height="6" rx="1"/>
+                                    <rect x="4" y="14" width="6" height="6" rx="1"/>
+                                    <rect x="14" y="14" width="6" height="6" rx="1"/>
+                                </svg>
+                            </span>
+                            All
+                        </button>
+                        <button class="tb-pill">Blog</button>
+                        <button class="tb-pill">Post</button>
+                        <button class="tb-pill">Email</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Templates tab -->
+        <section class="tb-section" id="tab-templates">
+
+            <div class="tb-card-grid">
+                <!-- BLOG TEMPLATES -->
+                <article class="tb-template-card" data-template="blog" data-template-key="blog_post_seo">
+                    <div class="tb-template-icon blog">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="4" y="4" width="16" height="16" rx="3"/>
+                            <path d="M8 9h8M8 13h5"/>
+                        </svg>
+                    </div>
+                    <h3>Blog Post SEO</h3>
+                    <p>SEO-optimized blog posts with proper heading structure.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Blog</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <article class="tb-template-card" data-template="blog" data-template-key="product_review">
+                    <div class="tb-template-icon blog">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="5" y="4" width="14" height="16" rx="3"/>
+                            <path d="M9 8h6M8 12h8M9 16h5"/>
+                        </svg>
+                    </div>
+                    <h3>Product Review</h3>
+                    <p>Structured reviews highlighting pros, cons and verdict.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Blog</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <article class="tb-template-card" data-template="blog" data-template-key="how_to_guide">
+                    <div class="tb-template-icon blog">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M6 4h11a1 1 0 0 1 1 1v15l-3-2-3 2-3-2-3 2V5a1 1 0 0 1 1-1z"/>
+                            <path d="M9 8h6M9 11h4"/>
+                        </svg>
+                    </div>
+                    <h3>How-to Guide</h3>
+                    <p>Step-by-step tutorials for tasks and workflows.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Blog</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <!-- SOCIAL MEDIA POST TEMPLATES -->
+                <article class="tb-template-card" data-template="post" data-template-key="social_post_general">
+                    <div class="tb-template-icon post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="5" y="4" width="14" height="16" rx="3"/>
+                            <path d="M8 9h8M8 13h6M8 17h3"/>
+                        </svg>
+                    </div>
+                    <h3>Social Media Post</h3>
+                    <p>Viral posts for Facebook and Instagram.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Post</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <article class="tb-template-card" data-template="post" data-template-key="product_launch">
+                    <div class="tb-template-icon post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 20h14M12 4v10M8 10l4-6 4 6"/>
+                        </svg>
+                    </div>
+                    <h3>Product Launch</h3>
+                    <p>Announce new products with clear value and offer.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Post</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <article class="tb-template-card" data-template="post" data-template-key="event_announcement">
+                    <div class="tb-template-icon post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="4" y="5" width="16" height="15" rx="2"/>
+                            <path d="M8 3v4M16 3v4M4 10h16"/>
+                        </svg>
+                    </div>
+                    <h3>Event Announcement</h3>
+                    <p>Promote events with date, time, and highlights.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Post</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <!-- EMAIL TEMPLATES -->
+                <article class="tb-template-card" data-template="email" data-template-key="email_marketing">
+                    <div class="tb-template-icon email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="5" width="18" height="14" rx="3"/>
+                            <path d="M3 8l9 6 9-6"/>
+                        </svg>
+                    </div>
+                    <h3>Email Marketing</h3>
+                    <p>Professional emails with high open rates.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Email</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <article class="tb-template-card" data-template="email" data-template-key="welcome_email">
+                    <div class="tb-template-icon email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="5" width="18" height="14" rx="3"/>
+                            <path d="M3 8l9 6 9-6"/>
+                            <path d="M7 10h4M7 13h3"/>
+                        </svg>
+                    </div>
+                    <h3>Welcome Email</h3>
+                    <p>Warm greetings for new subscribers and customers.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Email</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+
+                <article class="tb-template-card" data-template="email" data-template-key="monthly_newsletter">
+                    <div class="tb-template-icon email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <path d="M8 9h8M8 12h6M8 15h4"/>
+                        </svg>
+                    </div>
+                    <h3>Monthly Newsletter</h3>
+                    <p>Share monthly updates, news and useful tips.</p>
+                    <div class="tb-card-footer">
+                        <span class="tb-chip">Email</span>
+                        <button class="tb-use-btn">Use</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Brand Guide tab -->
+        <section class="tb-section hidden" id="tab-brand">
+            <!-- Brand information -->
+            <div class="tb-panel">
+                <div class="tb-panel-header">
+                    <div class="tb-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M9 12.5l2 2.5 4-5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Brand Information</h2>
+                        <p>Basic information about your brand.</p>
+                    </div>
+                </div>
+
+                <div class="tb-form-grid">
+                    <div class="tb-form-group">
+                        <label>Brand Name</label>
+                        <input type="text" value="ContentAI">
+                    </div>
+                    <div class="tb-form-group full">
+                        <label>Slogan</label>
+                        <input type="text" value="Create smarter content">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tone of voice -->
+            <div class="tb-panel">
+                <div class="tb-panel-header">
+                    <div class="tb-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="5" y="5" width="5" height="5" rx="1"/>
+                            <rect x="14" y="5" width="5" height="5" rx="1"/>
+                            <rect x="5" y="14" width="5" height="5" rx="1"/>
+                            <rect x="14" y="14" width="5" height="5" rx="1"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Tone of Voice</h2>
+                        <p>How your brand speaks in content.</p>
+                    </div>
+                </div>
+
+                <div class="tb-pill-group wrap">
+                    <button class="tb-pill soft tb-tone-pill">Professional</button>
+                    <button class="tb-pill soft tb-tone-pill">Friendly</button>
+                    <button class="tb-pill soft tb-tone-pill">Bold</button>
+                    <button class="tb-pill soft tb-tone-pill">Innovative</button>
+                    <button class="tb-pill soft tb-tone-pill">Trustworthy</button>
+                    <button class="tb-pill soft tb-tone-pill">Playful</button>
+                    <button class="tb-pill soft tb-tone-pill">Warm</button>
+                    <button class="tb-pill soft tb-tone-pill">Energetic</button>
+                    <button class="tb-pill soft tb-tone-pill">Minimalist</button>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="tb-panel">
+                <div class="tb-panel-header">
+                    <div class="tb-panel-icon">
+                        <span class="tb-typo-icon">T</span>
+                    </div>
+                    <div>
+                        <h2>Typography</h2>
+                        <p>Fonts and styles for your content.</p>
+                    </div>
+                </div>
+
+                <div class="tb-typo-grid">
+                    <div class="tb-typo-card" data-typo="heading">
+                        <div class="tb-typo-main">
+                            <h3>Headings</h3>
+                            <p class="tb-typo-current">Inter – Bold</p>
+                        </div>
+                        <div class="tb-font-list">
+                            <button class="tb-font-option" data-font="Inter, system-ui" style="font-family: Inter, system-ui;">Inter – Bold</button>
+                            <button class="tb-font-option" data-font="Georgia, serif" style="font-family: Georgia, serif;">Georgia</button>
+                            <button class="tb-font-option" data-font="'Times New Roman', serif" style="font-family: 'Times New Roman', serif;">Times New Roman</button>
+                            <button class="tb-font-option" data-font="'Courier New', monospace" style="font-family: 'Courier New', monospace;">Courier New</button>
+                        </div>
+                    </div>
+                    <div class="tb-typo-card" data-typo="body">
+                        <div class="tb-typo-main">
+                            <h3>Body</h3>
+                            <p class="tb-typo-current">Inter – Regular</p>
+                        </div>
+                        <div class="tb-font-list">
+                            <button class="tb-font-option" data-font="Inter, system-ui" style="font-family: Inter, system-ui;">Inter – Regular</button>
+                            <button class="tb-font-option" data-font="Arial, sans-serif" style="font-family: Arial, sans-serif;">Arial</button>
+                            <button class="tb-font-option" data-font="'Roboto', system-ui" style="font-family: 'Roboto', system-ui;">Roboto</button>
+                            <button class="tb-font-option" data-font="'Open Sans', system-ui" style="font-family: 'Open Sans', system-ui;">Open Sans</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+<!-- MODAL (dùng chung cho mọi template) -->
+<div class="tb-modal-overlay" id="templateModal">
+    <div class="tb-modal">
+        <div class="tb-modal-header">
+            <div>
+                <h2 id="modalTitle">Template</h2>
+                <p id="modalSubtitle"></p>
+            </div>
+            <button class="tb-modal-close" data-close>&times;</button>
+        </div>
+        <div class="tb-modal-body" id="modalFields">
+            <!-- Các field sẽ được render bằng JavaScript -->
+        </div>
+        <div class="tb-modal-footer">
+            <button class="tb-modal-btn tb-copy">Copy</button>
+            <button class="tb-modal-btn tb-download">Download</button>
+            <button class="tb-modal-btn tb-delete">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div id="tbToast" class="tb-toast"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const tabButtons = document.querySelectorAll(".tb-tab-btn");
+    const sections = {
+        templates: document.getElementById("tab-templates"),
+        brand: document.getElementById("tab-brand")
+    };
+
+    const saveBtn = document.getElementById("saveChangesBtn");
+    const brandInputs = document.querySelectorAll("#tab-brand input");
+    const tonePills = document.querySelectorAll(".tb-tone-pill");
+    const typoCards = document.querySelectorAll(".tb-typo-card");
+    const useButtons = document.querySelectorAll(".tb-use-btn");
+    const filterButtons = document.querySelectorAll(".tb-pill-bar .tb-pill");
+    const templateCards = document.querySelectorAll(".tb-template-card");
+    const filterRow = document.getElementById("templateFilterRow");
+    const toastEl = document.getElementById("tbToast");
+
+    const templateModal = document.getElementById("templateModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSubtitle = document.getElementById("modalSubtitle");
+    const modalFields = document.getElementById("modalFields");
+
+    const templateConfigs = {
+        // NHÓM 1: BLOG
+        blog_post_seo: {
+            title: "Blog Post SEO",
+            description: "SEO-optimized blog posts with proper heading structure.",
+            category: "blog",
+            fields: ["Blog Title", "Primary Keywords", "Meta Description", "Main Outline"]
+        },
+        product_review: {
+            title: "Product Review",
+            description: "Structured reviews highlighting pros, cons and verdict.",
+            category: "blog",
+            fields: ["Product Name", "Key Features", "Pros (Ưu điểm)", "Cons (Nhược điểm)", "Final Verdict (Đánh giá chung)"]
+        },
+        how_to_guide: {
+            title: "How-to Guide",
+            description: "Step-by-step tutorials for tasks and workflows.",
+            category: "blog",
+            fields: ["Topic/Task Name", "Target Audience", "Tools Needed", "Step-by-Step Instructions"]
+        },
+        // NHÓM 2: SOCIAL MEDIA POST
+        social_post_general: {
+            title: "Social Media Post",
+            description: "Viral posts for Facebook and Instagram.",
+            category: "post",
+            fields: ["Post Topic", "Core Message", "Preferred Tone", "Hashtags"]
+        },
+        product_launch: {
+            title: "Product Launch",
+            description: "Announce new products with clear value and offer.",
+            category: "post",
+            fields: ["Product Name", "Unique Selling Point (Điểm đặc biệt nhất)", "Special Offer/Price", "Launch Date"]
+        },
+        event_announcement: {
+            title: "Event Announcement",
+            description: "Promote events with date, time, and highlights.",
+            category: "post",
+            fields: ["Event Name", "Date & Time", "Location/Link", "Key Highlights of the Event"]
+        },
+        // NHÓM 3: EMAIL
+        email_marketing: {
+            title: "Email Marketing",
+            description: "Professional emails with high open rates.",
+            category: "email",
+            fields: ["Campaign Name", "Target Customer", "Main Offer", "Call to Action (Nút bấm)"]
+        },
+        welcome_email: {
+            title: "Welcome Email",
+            description: "Warm greetings for new subscribers and customers.",
+            category: "email",
+            fields: ["Subscriber Name", "Brand Introduction", "Main Benefit for Joining", "Next Steps"]
+        },
+        monthly_newsletter: {
+            title: "Monthly Newsletter",
+            subtitle: "Bản tin tháng gửi cho khách hàng.",
+            category: "email",
+            fields: ["Newsletter Month/Theme", "Major Update 1", "Major Update 2", "Useful Tip for Readers"]
+        }
+    };
+
+    function showToast(message) {
+        if (!toastEl) return;
+        toastEl.textContent = message;
+        toastEl.classList.add("show");
+        setTimeout(() => {
+            toastEl.classList.remove("show");
+        }, 3000);
+    }
+
+    function markDirty() {
+        if (saveBtn && saveBtn.disabled) {
+            saveBtn.disabled = false;
+            saveBtn.classList.add("active");
+        }
+    }
+
+    function updateTabUI(activeTab) {
+        Object.keys(sections).forEach(key => {
+            if (key === activeTab) {
+                sections[key].classList.remove("hidden");
+            } else {
+                sections[key].classList.add("hidden");
+            }
+        });
+
+        if (saveBtn) {
+            if (activeTab === "brand") {
+                saveBtn.style.display = "inline-flex";
+            } else {
+                saveBtn.style.display = "none";
+            }
+        }
+
+        if (filterRow) {
+            if (activeTab === "templates") {
+                filterRow.style.display = "flex";
+            } else {
+                filterRow.style.display = "none";
+            }
+        }
+    }
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const tab = btn.dataset.tab;
+
+            tabButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            updateTabUI(tab);
+        });
+    });
+
+    // Khởi tạo UI mặc định theo tab Templates
+    updateTabUI("templates");
+
+    brandInputs.forEach(input => {
+        input.addEventListener("input", markDirty);
+    });
+
+    tonePills.forEach(pill => {
+        pill.addEventListener("click", function () {
+            pill.classList.toggle("selected");
+            markDirty();
+        });
+    });
+
+    // Typography selector
+    typoCards.forEach(card => {
+        const current = card.querySelector(".tb-typo-current");
+        const list = card.querySelector(".tb-font-list");
+        const options = card.querySelectorAll(".tb-font-option");
+
+        card.addEventListener("click", () => {
+            card.classList.toggle("open");
+        });
+
+        options.forEach(opt => {
+            opt.addEventListener("click", function (e) {
+                e.stopPropagation();
+                const font = opt.getAttribute("data-font") || "";
+                const label = opt.textContent.trim();
+
+                if (current) {
+                    current.textContent = label;
+                }
+                card.style.fontFamily = font;
+                card.classList.remove("open");
+                markDirty();
+            });
+        });
+    });
+
+    // Save button click -> toast
+    if (saveBtn) {
+        saveBtn.addEventListener("click", function () {
+            if (saveBtn.disabled) return;
+            showToast("Save Changed");
+        });
+    }
+
+    // Filter logic for templates
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", function () {
+            const label = btn.textContent.trim().toLowerCase();
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const type = label; // all, blog, post, email
+
+            templateCards.forEach(card => {
+                const cardType = (card.getAttribute("data-template") || "").toLowerCase();
+                if (type === "all" || !type) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = cardType === type ? "" : "none";
+                }
+            });
+        });
+    });
+
+    // Modal helpers
+    function openTemplateModal(templateKey) {
+        if (!templateModal || !modalFields || !modalTitle) return;
+        const config = templateConfigs[templateKey];
+        if (!config) return;
+
+        // Set title & subtitle
+        modalTitle.textContent = config.title;
+        if (modalSubtitle) {
+            modalSubtitle.textContent = config.description || config.subtitle || "";
+        }
+
+        // Build fields dynamically
+        modalFields.innerHTML = "";
+        config.fields.forEach(labelText => {
+            const group = document.createElement("div");
+            group.className = "tb-form-group";
+
+            const label = document.createElement("label");
+            label.textContent = labelText;
+
+            const input = document.createElement("input");
+            input.type = "text";
+            input.className = "tb-field";
+
+            group.appendChild(label);
+            group.appendChild(input);
+            modalFields.appendChild(group);
+        });
+
+        templateModal.classList.add("open");
+    }
+
+    function closeModal(modal) {
+        if (modal) {
+            modal.classList.remove("open");
+        }
+    }
+
+    // Use buttons
+    useButtons.forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const card = btn.closest(".tb-template-card");
+            const key = card ? card.getAttribute("data-template-key") : "";
+            openTemplateModal(key);
+        });
+    });
+
+    // Modal close buttons & overlay click
+    if (templateModal) {
+        const closeBtn = templateModal.querySelector("[data-close]");
+        const copyBtn = templateModal.querySelector(".tb-copy");
+        const deleteBtn = templateModal.querySelector(".tb-delete");
+        const downloadBtn = templateModal.querySelector(".tb-download");
+
+        function resetFields() {
+            const fields = templateModal.querySelectorAll(".tb-field");
+            fields.forEach(f => {
+                f.value = "";
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener("click", () => {
+                resetFields();
+                closeModal(templateModal);
+            });
+        }
+
+        templateModal.addEventListener("click", function (e) {
+            if (e.target === templateModal) {
+                resetFields();
+                closeModal(templateModal);
+            }
+        });
+
+        if (copyBtn) {
+            copyBtn.addEventListener("click", function () {
+                const fields = templateModal.querySelectorAll(".tb-field");
+                const texts = [];
+                fields.forEach(f => {
+                    if (f.value && f.value.trim() !== "") {
+                        texts.push(f.value.trim());
+                    }
+                });
+                const content = texts.join("\n\n");
+                if (content) {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(content).then(() => {
+                            showToast("Content copied to clipboard!");
+                        });
+                    } else {
+                        const temp = document.createElement("textarea");
+                        temp.value = content;
+                        document.body.appendChild(temp);
+                        temp.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(temp);
+                        showToast("Content copied to clipboard!");
+                    }
+                } else {
+                    showToast("Nothing to copy.");
+                }
+            });
+        }
+
+        if (deleteBtn) {
+            deleteBtn.addEventListener("click", function () {
+                resetFields();
+                showToast("All content has been deleted.");
+            });
+        }
+
+        if (downloadBtn) {
+            downloadBtn.addEventListener("click", function () {
+                const titleText = modalTitle ? modalTitle.textContent.trim() : "Template";
+                const upperTitle = titleText.toUpperCase();
+
+                // Thu thập tất cả cặp Label + Input/Textarea trong modal
+                const groups = templateModal.querySelectorAll(".tb-form-group");
+                const fieldLines = [];
+
+                groups.forEach(group => {
+                    const label = group.querySelector("label");
+                    const field = group.querySelector(".tb-field");
+                    if (!label || !field) return;
+
+                    const labelText = (label.textContent || "").trim();
+                    const valueText = (field.value || "").trim();
+                    fieldLines.push(`${labelText.toUpperCase()}: ${valueText}`);
+                });
+
+                const now = new Date();
+                const generatedAt = now.toLocaleString();
+
+                const headerLine = "==========================================";
+                const footerSeparator = "------------------------------------------";
+
+                const body = `${headerLine}
+   KOVA CONTENT STUDIO - ${upperTitle}
+${headerLine}
+
+${fieldLines.join("\n")}
+
+${footerSeparator}
+Generated at: ${generatedAt}
+Thank you for using KoVa Content Studio!
+${headerLine}
+`;
+
+                // Tạo Blob và trigger tải file (UTF-8, hỗ trợ tiếng Việt)
+                const blob = new Blob([body], { type: "text/plain;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `${titleText}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // Thông báo & đóng modal sau 500ms
+                showToast("Successfully exported.");
+                setTimeout(() => {
+                    resetFields();
+                    closeModal(templateModal);
+                }, 500);
+            });
+        }
+    }
+});
+</script>
+
+</body>
+</html>
+

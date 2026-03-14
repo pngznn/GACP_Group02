@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "title": "Best Travel Destinations in Vietnam 2025",
+            "content": "Vietnam is one of Southeast Asia's most captivating destinations, offering a blend of natural beauty, rich history, and vibrant culture. From Ha Long Bay to Hoi An, travelers can experience beaches, cities, and ancient towns in a single trip.",
+            "user_email": "user1@gmail.com"
+        },
+        {
+            "title": "SEO Checklist for Blog Posts",
+            "content": "Before publishing any blog post, review on-page SEO: optimize the title tag, write a compelling meta description, use one H1, structured H2/H3 headings, include your primary keyword naturally, add internal links, and compress images for fast loading.",
+            "user_email": "admin@gmail.com"
+        },
+        {
+            "title": "Email Nurture Sequence for New Subscribers",
+            "content": "Design a 5-email sequence that welcomes new subscribers, introduces your brand story, delivers a high-value resource, showcases 2–3 success stories, and finally invites them to a clear next step such as booking a call or starting a free trial.",
+            "user_email": "user2@gmail.com"
+        },
+        {
+            "title": "Social Media Content Ideas for SaaS",
+            "content": "Mix product tips, customer highlights, behind-the-scenes clips, and quick how-to videos. Aim for short, skimmable posts on LinkedIn and more visual storytelling on Instagram and TikTok to increase reach and engagement.",
+            "user_email": "user3@gmail.com"
+        }
+    ]
+}

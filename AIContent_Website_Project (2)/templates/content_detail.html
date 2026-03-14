@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Content Detail - KoVa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+{% include 'sidebar.html' %}
+
+<main class="content">
+        <div class="library-header">
+            <div>
+                <h1>AI Content Library</h1>
+                <p class="subtitle">The library stores your AI Contents</p>
+            </div>
+
+            <a href="{{ url_for('create_ai') }}">
+                <button class="create-btn">+ Create Content</button>
+            </a>
+        </div>
+
+
+<div class="detail-wrapper">
+
+    <div class="detail-card">
+
+        <div class="detail-header">
+            <h2>{{ item.title }}</h2>
+            <p class="date">{{ item.date }}</p>
+        </div>
+
+        <div class="content-box">
+            <div class="content-text">
+            {{ item.content | safe }}
+            </div>
+        </div>
+
+        <div class="detail-actions">
+
+            <a href="{{ url_for('ai_library') }}">
+                <button class="back-btn">← Back</button>
+            </a>
+
+            <button id="exportBtn" class="export-btn">Export</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+</div>
+<script>
+
+document.getElementById("exportBtn").addEventListener("click", function(){
+
+    const title = document.querySelector(".detail-header h2").innerText;
+    const date = document.querySelector(".date").innerText;
+    const content = document.querySelector(".content-box").innerText;
+
+    const text = title + "\n" + date + "\n\n" + content;
+
+    const blob = new Blob([text], {type:"text/plain"});
+
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = "ai_content.txt";
+
+    link.click();
+
+});
+
+</script>
+</body>
+</html>

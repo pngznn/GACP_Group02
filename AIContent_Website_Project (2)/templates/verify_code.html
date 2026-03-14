@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Code</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='verify.css') }}">
+</head>
+<body>
+
+<div class="login-wrapper">
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+        <h2>Reset your Password!</h2>
+        <p>Please enter the code that was sent to your email!</p>
+
+        <form method="POST" novalidate>
+
+            <div class="input-group code-input">
+                <input type="text" name="code">
+            </div>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <div class="btn-group">
+                <a href="{{ url_for('forgot_password') }}" class="back-btn">Back</a>
+                <button type="submit" class="ok-btn">OK</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

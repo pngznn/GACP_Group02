@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CARD ===== */
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    width: 650px;
+    max-width: 95%;
+    padding: 60px 50px;
+    border-radius: 25px;
+
+    background-image: url("bg_card.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.login-card > p {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+h2 span {
+    color: #8f8fff;
+}
+
+/* ===== INPUT ===== */
+.code-input input {
+    width: 200px;
+    height: 45px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* ===== BUTTON GROUP ===== */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* Reset default button */
+button {
+    all: unset;
+}
+
+/* ===== SHARED BUTTON STYLE ===== */
+.back-btn,
+.ok-btn {
+    width: 150px;
+    height: 45px;
+    border-radius: 25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* OK BUTTON */
+.ok-btn {
+    background: rgba(108, 108, 250, 0.6);
+    color: white;
+    transition: 0.3s;
+}
+
+.ok-btn:hover {
+    background: #6c6cfa;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background: rgba(108, 108, 250, 0.6);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #6c6cfa;
+}
+
+.error {
+    color: #ffcccc;
+    margin-top: 10px;   /* khoảng cách với input */
+    margin-bottom: 20px; /* khoảng cách với nút */
+}

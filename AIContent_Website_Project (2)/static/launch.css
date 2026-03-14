@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+
+    /* nền full màn hình */
+    background-image: url("bg_card.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 90px;
+    margin-bottom: 15px;
+}
+
+.brand {
+    color: #bca8ff;
+    margin: 10px 0;
+    font-size: 36px;
+}
+
+.subtitle {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: block;
+    padding: 14px;
+    margin: 15px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-login {
+    background-color: #7c6bff;
+    color: white;
+}
+
+.btn-register {
+    background-color: #e6e6e6;
+    color: black;
+}
+
+.hero {
+    text-align: center;
+    color: white;
+    animation: fadeIn 1.5s ease;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    width: 90px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.btn {
+    display: block;
+    width: 260px;
+    margin: 15px auto;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-login {
+    background-color: #7c6bff;
+    color: white;
+}
+
+.btn-login:hover {
+    transform: scale(1.05);
+}
+
+.btn-register {
+    background-color: #ffffff;
+    color: black;
+}
+
+.btn-register:hover {
+    transform: scale(1.05);
+}

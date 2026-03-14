@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Approval Workflow</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='approval.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    {% include 'sidebar.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <h1>Approval Workflow</h1>
+        <p class="subtitle">Review, approve, or reject team content</p>
+
+
+        <!-- STATUS CARDS -->
+
+        <div class="status-cards">
+
+            <div class="status-card pending">
+                <span>{{ pending }}</span>
+                <p>Pending Review</p>
+            </div>
+
+            <div class="status-card approved">
+                <span>{{ approved }}</span>
+                <p>Approved</p>
+            </div>
+
+            <div class="status-card rejected">
+                <span>{{ rejected }}</span>
+                <p>Rejected</p>
+            </div>
+
+        </div>
+
+
+        <!-- QUEUE HEADER + FILTER -->
+
+        <div class="queue-header">
+
+            <h2>Approval Queue</h2>
+
+            <div class="filter-tabs">
+
+                <button class="tab active" onclick="filterPosts('all', this)">
+                    All
+                </button>
+
+                <button class="tab" onclick="filterPosts('pending', this)">
+                    Pending
+                </button>
+
+                <button class="tab" onclick="filterPosts('reviewed', this)">
+                    Reviewed
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPROVAL QUEUE -->
+
+        <div class="queue-card">
+
+        {% for post in posts %}
+
+        <div class="post-row" data-status="{{ post.status }}">
+
+        <div class="post-left">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-author">{{ post.author }} • {{ post.time }}</div>
+        </div>
+
+        <div class="post-right">
+
+        {% if post.status == "pending" %}
+
+        <span class="badge pending-badge">Pending Review</span>
+
+        <button class="review-btn"
+        onclick="openPopup({{ loop.index0 }}, '{{ post.title }}')">
+        Review
+        </button>
+
+        {% elif post.status == "approved" %}
+
+        <span class="badge approved-badge">Approved</span>
+
+        {% elif post.status == "rejected" %}
+
+        <span class="badge rejected-badge">Rejected</span>
+
+        {% endif %}
+
+        </div>
+
+        </div>
+
+        {% endfor %}
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- POPUP REVIEW -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<h3 id="popupTitle"></h3>
+
+<form method="POST" action="/update_status">
+
+<input type="hidden" name="index" id="postIndex">
+
+<button type="submit" name="status" value="approved" class="approve-btn">
+Approve
+</button>
+
+<button type="submit" name="status" value="rejected" class="reject-btn">
+Reject
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openPopup(index, title){
+
+document.getElementById("popup").style.display = "flex";
+document.getElementById("postIndex").value = index;
+document.getElementById("popupTitle").innerText = "Review: " + title;
+
+}
+
+
+// FILTER POSTS
+
+function filterPosts(type, btn){
+
+const posts = document.querySelectorAll(".post-row")
+
+posts.forEach(post => {
+
+const status = post.dataset.status
+
+if(type === "all"){
+post.style.display = "flex"
+}
+
+else if(type === "pending"){
+post.style.display = status === "pending" ? "flex" : "none"
+}
+
+else if(type === "reviewed"){
+post.style.display = status !== "pending" ? "flex" : "none"
+}
+
+})
+
+
+/* đổi active tab */
+
+document.querySelectorAll(".tab").forEach(t=>{
+t.classList.remove("active")
+})
+
+btn.classList.add("active")
+
+}
+
+</script>
+</body>
+</html>

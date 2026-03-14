@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - KoVa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+
+<div class="container {% if not error %}animate{% endif %}">
+
+    <!-- LEFT FORM -->
+    <div class="form-section">
+
+        <div class="header">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+            <div>
+                <h2>Register an Account</h2>
+                <p>Register to get started!</p>
+            </div>
+        </div>
+
+        <form method="POST" novalidate>
+            <div class="row">
+                <div class="input-group">
+                    <label>Name <span>*</span></label>
+                    <div class="input-box">
+                        <!-- User icon -->
+                        <svg class="icon-left" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"
+                                fill="none" stroke="currentColor" stroke-width="1.8"/>
+                        </svg>
+
+                        <input type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            value="{{ form_data.name if form_data else '' }}"
+                            class="{% if error_fields and 'name' in error_fields %}input-error{% endif %}">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Gender</label>
+                    <div class="input-box">
+                        <select name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Email Address <span>*</span></label>
+                <div class="input-box">
+                    <!-- Email Icon -->
+                    <svg class="icon-left" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 
+                        2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 
+                        4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <input type="email"
+                        name="email"
+                        placeholder="Email"
+                        value="{{ form_data.email if form_data else '' }}"
+                        class="{% if error_fields and 'email' in error_fields %}input-error{% endif %}">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Phone Number</label>
+                <div class="input-box">
+                    <!-- Phone icon -->
+                    <svg class="icon-left" viewBox="0 0 24 24">
+                        <path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24
+                        c1.1.3 2.3.5 3.6.5a1 1 0 011 1V21a1 1 0 01-1 1C10 22 2 14 2 4
+                        a1 1 0 011-1h3.5a1 1 0 011 1c0 1.3.2 2.5.5 3.6a1 1 0 01-.24 1z"
+                        fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    </svg>
+
+                    <input type="text" name="phone" placeholder="+123 456 789">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Password <span>*</span></label>
+                <div class="input-box">
+                    <!-- Lock Icon -->
+                    <svg class="icon-left" viewBox="0 0 24 24">
+                        <path d="M17 8V6a5 5 0 00-10 0v2H5v14h14V8h-2zm-8 
+                        0V6a3 3 0 016 0v2H9z"/>
+                    </svg>
+
+                    <input type="password"
+                            name="password"
+                            placeholder="Password"
+                            value="{{ form_data.password if form_data else '' }}"
+                            class="{% if error_fields and 'password' in error_fields %}input-error{% endif %}">
+
+                    <svg class="icon-right eye-open"
+                        onclick="togglePassword(this, 'password')"
+                        viewBox="0 0 24 24">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+
+                    <svg class="icon-right eye-closed"
+                        onclick="togglePassword(this, 'password')"
+                        viewBox="0 0 24 24"
+                        style="display:none;">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                        <line x1="4" y1="4" x2="20" y2="20"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password <span>*</span></label>
+                <div class="input-box">
+                    <!-- Lock Icon -->
+                    <svg class="icon-left" viewBox="0 0 24 24">
+                        <path d="M17 8V6a5 5 0 00-10 0v2H5v14h14V8h-2zm-8 
+                        0V6a3 3 0 016 0v2H9z"/>
+                    </svg>
+
+                    <input type="password"
+                        name="confirm_password"
+                        placeholder="Confirm Password"
+                        value="{{ form_data.confirm_password if form_data else '' }}"
+                        class="{% if error_fields and 'confirm_password' in error_fields %}input-error{% endif %}">
+
+                    <svg class="icon-right eye-open"
+                        onclick="togglePassword(this, 'confirm_password')"
+                        viewBox="0 0 24 24">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+
+                    <svg class="icon-right eye-closed"
+                        onclick="togglePassword(this, 'confirm_password')"
+                        viewBox="0 0 24 24"
+                        style="display:none;">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                        <line x1="4" y1="4" x2="20" y2="20"/>
+                    </svg>
+                </div>
+            </div>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit" class="register-btn">Register</button>
+
+            <p class="login-link">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Login Now!</a>
+            </p>
+
+        </form>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="image-section"></div>
+
+</div>
+
+<script>
+function togglePassword(icon, inputName) {
+    const input = document.querySelector(`input[name="${inputName}"]`);
+    const eyeOpen = icon.parentElement.querySelector(".eye-open");
+    const eyeClosed = icon.parentElement.querySelector(".eye-closed");
+
+    if (input.type === "password") {
+        input.type = "text";
+        eyeOpen.style.display = "none";
+        eyeClosed.style.display = "block";
+    } else {
+        input.type = "password";
+        eyeOpen.style.display = "block";
+        eyeClosed.style.display = "none";
+    }
+}
+</script>
+
+</body>
+{% if success %}
+<div id="overlay"></div>
+
+<div id="toast">
+    ✓ Registered successfully!
+</div>
+
+<script>
+setTimeout(() => {
+    window.location.href = "{{ url_for('login') }}";
+}, 1500);
+</script>
+{% endif %}
+
+</html>
