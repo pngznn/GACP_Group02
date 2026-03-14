@@ -31,18 +31,35 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Generate content such as blog posts, social media captions, and email drafts
 - Support customizable prompts to match different tones and purposes
 - AI processing is handled via a local API
+<p align="center">
+  <img src="images/ai_content.png" width="700">
+</p>
 
 ### Templates & Brand Style Guide
 - Create and manage content templates
 - Enforce brand voice, tone, and formatting consistency
 
+<p align="center">
+  <img src="images/templates_brand.png" width="700">
+</p>
+
+
 ### SEO Optimization
 - Analyze generated content for SEO performance
 - Provide keyword suggestions and optimization recommendations
 
+<p align="center">
+  <img src="images/seo_optimizer.png" width="700">
+</p>
+
+
 ### Collaboration & Approval Workflow
 - Enable multiple users to collaborate on content
 - Support content review, approval, and revision workflows
+
+<p align="center">
+  <img src="images/collaboration.png" width="700">
+</p>
 
 ---
 
