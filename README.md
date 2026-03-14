@@ -32,7 +32,7 @@ In addition, it supports collaboration and approval workflows, making it suitabl
 - Support customizable prompts to match different tones and purposes
 - AI processing is handled via a local API
 <p align="center">
-  <img src="images/AI Generator.png" width="700">
+  <img src="images/Ai Generator.png" width="700">
 </p>
 
 ### Templates & Brand Style Guide
